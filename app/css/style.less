@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Averia+Sans+Libre:400,700);
+
 td{
   border: 2px solid black;
   height: 120px;
@@ -19,6 +21,7 @@ h1 {
   color: paleturquoise;
   text-shadow: 2px 2px lightslategrey;
   font-size: 2.5em;
+  font-family: 'Averia Sans Libre', cursive;
 }
 
 #wrapButtons{
@@ -29,20 +32,27 @@ h1 {
   border: 10px solid black;
   text-align: center;
   box-shadow: 0px 0px 10px 5px lightslategrey inset;
+  .quick-gradient(top, 0.2);
 }
 
 button {
   margin: 30px;
   height: 60px;
-  padding: 20px;
   width: 175px;
   border-radius: 20px;
-  box-shadow: 0px 0px 3px 4px black;
-  background-color: lightgray;
-  font-size: 20px;
+  border: 2px solid black;
+  box-shadow: 0px 0px 3px 4px lightslategrey inset;
+  background-color: paleturquoise;
+  font-size: 2em;
   text-align: center;
   color: black;
   font-weight: bold;
+  font-family: 'Averia Sans Libre', cursive;
+  .quick-gradient(top, 0.4);
+}
+
+button:hover {
+  background-color: grey;
 }
 
 #header {
@@ -57,6 +67,7 @@ button {
 
 body{
   background-color: lightseagreen;
+  .quick-gradient(top, 0.25);
 }
 
 table {
@@ -65,3 +76,15 @@ table {
   background-color: lightslategrey;
   box-shadow: 0px 0px 10px 5px lightgreen inset;
 }
+.quick-gradient (@origin: left, @alpha: 0.2) {
+  background-image: -webkit-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+  background-image: -moz-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+  background-image: -o-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+  background-image: -ms-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+  background-image: linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+}
+
+/* #somediv {
+background-color: BADA55;
+.quick-gradient(top, 0.2);
+                            }*/
