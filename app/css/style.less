@@ -1,11 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Averia+Sans+Libre:400,700);
 
+@primary: yellow;
+
 td{
   border: 2px solid black;
   height: 120px;
   width: 80px;
   border-radius: 5px;
-  background-image: url('../media/CardBack.jpg');
+  background-image: url('../media/blackandyellow.jpg');
   background-size: 80px 120px;
   box-shadow: 2px 2px 3px 3px;
 } 
@@ -35,6 +37,11 @@ h1 {
   .quick-gradient(top, 0.2);
 }
 
+td:hover{
+  box-shadow: 2px 2px 5px 5px;
+}
+
+
 button {
   margin: 30px;
   height: 60px;
@@ -51,8 +58,10 @@ button {
   .quick-gradient(top, 0.4);
 }
 
+
 button:hover {
-  background-color: grey;
+  background-color: paleturquoise;
+  .quick-gradient(top, 0.7);
 }
 
 #header {
