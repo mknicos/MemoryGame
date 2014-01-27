@@ -55,19 +55,18 @@
       guessQueue = cardText;
     }else{
       removeCards(cardText);
-      debugger;
-      counter ++;
-      if(counter > 9){
-        alert('You have won!');
-        clearEverything();
-      }
+      //counter ++;
+     // if(counter > 9){
+      //  alert('You have won!');
+      //  clearEverything();
+     // }
     }
   }
 
   function removeCards(clickedCardText){
     var matchedCards =  $('td:contains('+clickedCardText+')');
     matchedCards.removeClass('cards').addClass('matched');
-    matchedCards.delay(1000).queue( function(next){
+    matchedCards.delay(600).queue( function(next){
       $(this).addClass('hidden');
       next();
     });
