@@ -5,7 +5,6 @@
 
   var scrambledCards = [];
   var guessQueue;
-  var counter = 0;
 
   $(document).ready(init);
 
@@ -24,17 +23,22 @@
       'O','P','Q','R','S','T','U',
       'V','W','X','Y','Z'];
 
-    var playingCards = [];            //select 10 random letters, putting each with a 
-    while(playingCards.length < 20){  //twin (same letter) into an array
+    var playingCards = [];
+    while(playingCards.length < 20){
+      //select 10 random letters, putting each with a
+      //twin (same letter) into an array
       var randomIndexTo25 = Math.floor(Math.random()* 26);
       var select = startCards[randomIndexTo25];
-      if( playingCards.indexOf(select) === -1){ //ensures no duplicate letters
+      if( playingCards.indexOf(select) === -1){
+        //ensures no duplicate letters
         playingCards.push(select);
         playingCards.push(select);
       }
     }
 
-    var indexUsed = [];  //this is a dumpoff array, aids the loop in not repeating a letter.
+    var indexUsed = [];
+    //this is a dumpoff array, aids the loop in not repeating a letter.
+
     while(indexUsed.length < 20) {
       var randomIndexTo19 = Math.floor(Math.random() * 20);
       if(indexUsed.indexOf(randomIndexTo19) === -1){
@@ -55,11 +59,6 @@
       guessQueue = cardText;
     }else{
       removeCards(cardText);
-      //counter ++;
-     // if(counter > 9){
-      //  alert('You have won!');
-      //  clearEverything();
-     // }
     }
   }
 
@@ -73,12 +72,10 @@
   }
 
   function clearEverything(){
-    $('td').text('').removeClass('hidden').addClass('cards');
+    $('td').text('').removeClass('hidden reveal matched').addClass('cards');
     $('td').hide();
-    scrambledCards = [];
+    scrambledCards.length = 0;
     guessQueue = '';
-    counter = 0;
-
   }
 
 
