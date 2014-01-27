@@ -3,50 +3,56 @@
 (function(){
   'use strict';
 
- //var cards = [];
-//  for(var i = 0; i < 26; i ++){
-  //  cards.push(i);
-  //
- // }
-  var startcards = ['A','B','C','D','E','F','G',
-                    'H','I','J','K','L','M','N',
-                    'O','P','Q','R','S','T','U',
-                    'V','W','X','Y','Z'];
-  var tiles = ['#a1','#a2','#a3','#a4','#a5','#b1','#b2','#b3','#b4','#b5',
-               '#c1','#c2','#c3','#c4','#c5','#d1','#d2','#d3','#d4','#d5',];
+  var scrambledCards = [];
 
   $(document).ready(init);
 
   function init(){
-    $('#play').click(clickStartGame);
+    $('#play').click(generateRandomCards);
+    $('td').click(clickOnCard);
 
   }
 
-  function clickStartGame(){
-    generateRandomCards();
-    hidecards();
-  }
+  function generateRandomCards(){
+      /*function generates a random array filled with 10 letters, each letter
+       * in the array will be in the array twice, back to back, ex. [A,A,E,E,T,T...]*/
 
-  function generateRandomCards(){     //function generates two random
-    debugger;
+    var startCards = ['A','B','C','D','E','F','G',
+      'H','I','J','K','L','M','N',
+      'O','P','Q','R','S','T','U',
+      'V','W','X','Y','Z'];
+
     var playingCards = [];
     while(playingCards.length < 20){
-      var randomIndex = Math.floor(Math.random()* 26);
-      var select = startcards[randomIndex];
+      var randomIndexTo25 = Math.floor(Math.random()* 26);
+      var select = startCards[randomIndexTo25];
       if( playingCards.indexOf(select) === -1){
         playingCards.push(select);
         playingCards.push(select);
       }
-      console.log(playingCards);
+    }
+
+    var indexUsed = [];
+    while(indexUsed.length < 20) {
+      var randomIndexTo19 = Math.floor(Math.random() * 20);
+      if(indexUsed.indexOf(randomIndexTo19) === -1){
+        indexUsed.push(randomIndexTo19);
+        scrambledCards.push(playingCards[randomIndexTo19]);
+      }
+      console.log(scrambledCards);
     }
   }
-  function hidecards(){
-    $('#a3').css('visibility','hidden');
-    $('#d3').css('visibility','hidden');
-    $('#a4').css('visibility','hidden');
-    console.log(tiles);
+
+  function clickOnCard(){
+    $(this).removeClass('cards').addClass('reveal');
+    var cardIdNum = this.id;
+    cardIdNum = parseInt(cardIdNum.slice(1));
+    var cardValue = scrambledCards[cardIdNum];
+    $(this).text(cardValue);
 
   }
+
+
 
 
 })();
