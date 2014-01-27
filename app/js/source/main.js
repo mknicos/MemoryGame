@@ -24,9 +24,10 @@
 
   function clickStartGame(){
     generateRandomCards();
+    hidecards();
   }
 
-  function generateRandomCards(){     //funciton generates two random
+  function generateRandomCards(){     //function generates two random
     debugger;
     var playingCards = [];
     while(playingCards.length < 20){
@@ -38,6 +39,13 @@
       }
       console.log(playingCards);
     }
+  }
+  function hidecards(){
+    $('#a3').css('visibility','hidden');
+    $('#d3').css('visibility','hidden');
+    $('#a4').css('visibility','hidden');
+    console.log(tiles);
+
   }
 
 
