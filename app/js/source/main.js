@@ -6,6 +6,7 @@
   var scrambledCards = [];
   var guessQueue;
   var timer;
+  var counter = 10;
 
   $(document).ready(init);
 
@@ -73,9 +74,10 @@
     }
 
 //if statement runs if no cards are left
-//NEED TO FIND WAY TO END GAME
-    if(scrambledCards.length < 1){
+    if(counter< 1){
       clearInterval(timer);
+      var score = $('#timer').text();
+      $('#prevScore').text('Prev Time: ' + score);
       $('#timer').hide();
       $('#wrapCards').hide();
     }
@@ -88,9 +90,8 @@
     matchedCards.removeClass('cards').addClass('matched');
     setTimeout(function(){
       $('.matched').addClass('hidden');
-//remove both cards from array of scrambled cards to allow game to end
-// BUG< REMOVES VISIBLE CARDS scrambledCards = _.without(scrambledCards, clickedCardText);
     },1000);
+    counter --;
   }
 
   function clearEverything(){
