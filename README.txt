@@ -9,3 +9,13 @@ a row.
 
 Future updates hope to include an option menu allowing you to change appearance such
 as card design. Also possibly a timer
+
+
+1-30-14
+
+Added timer functionality, and animation effects to timer and cards.
+Refactored code to a simpler form using loDash methods on arrays.
+
+Future updates: Need game to know when all cards are guessed.
+Scoreboard to keep track of time lapsed during all games.
+Menu allowing change of appearance
