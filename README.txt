@@ -19,3 +19,10 @@ Refactored code to a simpler form using loDash methods on arrays.
 Future updates: Need game to know when all cards are guessed.
 Scoreboard to keep track of time lapsed during all games.
 Menu allowing change of appearance
+
+2-1-14
+Previous Score is displayed on completion of game. Game reacts to when no cards are remaining.
+
+Future Updates: Diasable ability to click same card twice.
+Previous scores kept in memory and accessable to more than just last score.
+Ability to change appearance.
