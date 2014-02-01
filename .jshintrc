@@ -20,6 +20,6 @@
   "browser": true,
   "jquery": true,
   "validthis": true,
-  "globals": {}
+  "globals": {"_": true}
 }
 

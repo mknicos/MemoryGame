@@ -5,6 +5,7 @@
 
   var scrambledCards = [];
   var guessQueue;
+  var timer;
 
   $(document).ready(init);
 
@@ -13,9 +14,27 @@
     $('#play').click(generateRandomCards);
     $('td').click(clickOnCard);
     $('#clear').click(clearEverything);
+    $('#play').click(clickStartTimer);
+  }
+
+  function clickStartTimer(){
+//Timer Starts when play is clicked
+
+    var seconds = 0;
+    var min = 0;
+    timer = setInterval(function(){
+      seconds ++;
+      if(seconds === 60){
+        min = min + 1;
+        seconds = 0;
+      }
+      $('#timer').text(min + ':' + seconds);
+    },1000);
+
   }
 
   function generateRandomCards(){
+//calculator dislays when 'play' is clicked
     $('td').slideDown('slow');
 
     var startCards = ['A','B','C','D','E','F','G',
@@ -24,28 +43,22 @@
       'V','W','X','Y','Z'];
 
     var playingCards = [];
+
+//select 10 letters from alphabet, duplicates them, and adds to playingCards array
+
     while(playingCards.length < 20){
-      //select 10 random letters, putting each with a
-      //twin (same letter) into an array
       var randomIndexTo25 = Math.floor(Math.random()* 26);
       var select = startCards[randomIndexTo25];
+//ensures no duplicate letters
       if( playingCards.indexOf(select) === -1){
-        //ensures no duplicate letters
         playingCards.push(select);
         playingCards.push(select);
       }
     }
 
-    var indexUsed = [];
-    //this is a dumpoff array, aids the loop in not repeating a letter.
+    scrambledCards = _.shuffle(playingCards);
 
-    while(indexUsed.length < 20) {
-      var randomIndexTo19 = Math.floor(Math.random() * 20);
-      if(indexUsed.indexOf(randomIndexTo19) === -1){
-        indexUsed.push(randomIndexTo19);
-        scrambledCards.push(playingCards[randomIndexTo19]);
-      } //scrambledCards is the final array of letters to be used
-    }   //each game
+//this is a dumpoff array, aids the loop in not repeating a letter.
   }
 
   function clickOnCard(){
@@ -65,10 +78,9 @@
   function removeCards(clickedCardText){
     var matchedCards =  $('td:contains('+clickedCardText+')');
     matchedCards.removeClass('cards').addClass('matched');
-    matchedCards.delay(600).queue( function(next){
-      $(this).addClass('hidden');
-      next();
-    });
+    setTimeout(function(){
+      $('.matched').addClass('hidden');
+    },1000);
   }
 
   function clearEverything(){
@@ -76,6 +88,7 @@
     $('td').hide();
     scrambledCards.length = 0;
     guessQueue = '';
+    clearInterval(timer);
   }
 
 
